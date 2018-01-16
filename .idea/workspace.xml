@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c8bd2a46-00dd-47fd-8a33-f72173f612a6" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/main/main.go" afterPath="$PROJECT_DIR$/main/main.go" />
       <change beforePath="$PROJECT_DIR$/readme/induction.md" afterPath="$PROJECT_DIR$/readme/induction.md" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -50,8 +49,8 @@
       <file leaf-file-name="induction.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/readme/induction.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="245" column="0" lean-forward="true" selection-start-line="245" selection-start-column="0" selection-end-line="245" selection-end-column="0" />
+            <state relative-caret-position="304">
+              <caret line="16" column="6" lean-forward="true" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -65,6 +64,11 @@
         <option value="Go File" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>结构体</find>
+    </findStrings>
   </component>
   <component name="GOROOT" path="/usr/local/Cellar/go/1.9.2/libexec" />
   <component name="Git.Settings">
@@ -89,10 +93,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-17" />
-    <option name="y" value="92" />
+    <option name="x" value="114" />
+    <option name="y" value="23" />
     <option name="width" value="1017" />
-    <option name="height" value="777" />
+    <option name="height" value="769" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="false" id="Update" />
@@ -165,7 +169,7 @@
     <option name="remove_strategy" value="false" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-17" y="92" width="1017" height="777" extended-state="0" />
+    <frame x="114" y="23" width="1017" height="769" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2300885" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -195,7 +199,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="lue" />
-    <option name="LAST_COMMIT_MESSAGE" value="lue" />
+    <MESSAGE value="简介" />
+    <option name="LAST_COMMIT_MESSAGE" value="简介" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -275,8 +280,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/readme/induction.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="245" column="0" lean-forward="true" selection-start-line="245" selection-start-column="0" selection-end-line="245" selection-end-column="0" />
+        <state relative-caret-position="304">
+          <caret line="16" column="6" lean-forward="true" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
           <folding />
         </state>
       </provider>
