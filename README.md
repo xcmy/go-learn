@@ -2,7 +2,10 @@
 
 
 ### 学习资源
-- [A curated list of awesome Go frameworks, libraries and software](https://github.com/avelino/awesome-go)
+
+- [The Go Programming Language](https://github.com/golang/go)
+
+- [awesome Go](https://github.com/avelino/awesome-go)
 
 ### 快速入门
 
