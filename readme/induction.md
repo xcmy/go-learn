@@ -37,7 +37,8 @@ go run main.go
 
 - 编译
 
-go run会先编译然后再运行你的代码，它会在一个临时的目录下编译这段代码，然后执行，最后自动清除生成的临时文件。通过运行以下命令你可以看见这个零临时文件的位置：
+go run会先编译然后再运行你的代码，它会在一个临时的目录下编译这段代码，然后执行，最后自动清除生成的临时文件。
+通过运行以下命令你可以看见这个零临时文件的位置：
 
 ```go
 go run --work main.go
@@ -253,13 +254,125 @@ func grow2(people *People)  {
 
 > *People 地址类型 指针类型
 
-> 复制一个指针变量的开销比复制一个复杂的结构体小。在一个64的系统上，指针的大小只有64位。如果我们的结构体有很多字段，创建一个结构体的拷贝会有很大的性能开销。
-指针的真正意义就是通过指针可以共享值,所以上面的指针引用很能节省开销。
+> 复制一个指针变量的开销比复制一个复杂的结构体小。在一个64的系统上，指针的大小只有64位。如果我们的结构体有很多字段，
+创建一个结构体的拷贝会有很大的性能开销。指针的真正意义就是通过指针可以共享值,所以上面的指针引用很能节省开销。
 
 
+#### 结构体函数
+
+或者说实例方法，（结构体实例调用的方法）
+
+- 类型*People是super方法的接收者
+
+```go
+func (people *People) super()  {
+	people.Age += 2
+}
+
+```
+
+调用
+
+```go
+
+adam := &People{
+		Name:"Adam",
+		Age:16,
+	}
+adam.super()
+fmt.Println(adam.Age) //输出18
+
+```
 
 
+#### 构造函数
 
+结构体没有构造函数，不过可以通过函数来返回一个结构体实例
+
+```go
+
+func newPeople(name string,age int) *People  {
+	return &People{
+		Name:name,
+		Age:age,
+	}
+}
+
+func newPeople1(name string,age int) People  {
+	return People{
+		Name:name,
+		Age:age,
+	}
+}
+
+```
+
+```go
+
+fmt.Println(newPeople("Tom",26))  //输出 &{Tom 26}
+
+fmt.Println(newPeople1("Tom",26)) //输出 {Tom 26}
+
+```
+
+尽管没有构造函数，go有一个内置的函数new，可以用来分配一个类型需要的内存。
+
+```go
+
+p1 := new(People)
+//等同于 p1 := &People{}
+p1.Age = 26
+p1.Name = "Army"
+
+fmt.Println(p1)  //输出 &{Army 26}
+
+```
+
+值类型和指针类型类型
+
+```go
+
+//p2 是值类型
+p2 := People{Name:"xiaoming",Age:23}
+
+//p1 是指针类型
+p1 := new(People)
+
+fmt.Println(p1)  //输出 &{Army 26}
+fmt.Println(p2) //输出  {xiaoming 23}
+
+```
+
+#### 结构体成员
+
+> 结构体成员可以是任意的类型，比如整型、字符串类型、布尔类型，以及数组、映射、接口和函数类型
+
+比如我们给People扩展一下
+
+
+```go
+
+type People struct {
+	Name string
+	Age int
+	Father *People
+}
+
+```
+初始化
+
+```go
+
+peo := &People{
+		Name : "Tom",
+		Age : 20,
+		Father:&People{
+			Name:"Smith",
+			Age:56,
+		},
+	}
+fmt.Println(peo.Father)  //输出 &{Smith 56 <nil>}
+```
 
 
 
