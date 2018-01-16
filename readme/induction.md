@@ -262,7 +262,7 @@ func grow2(people *People)  {
 
 或者说实例方法，（结构体实例调用的方法）
 
-- 类型*People是super方法的接收者
+- 类型*People是super方法的接受者
 
 ```go
 func (people *People) super()  {
@@ -375,4 +375,127 @@ fmt.Println(peo.Father)  //输出 &{Smith 56 <nil>}
 ```
 
 
+#### 嵌入类型
+
+> 结构体类型可以包含匿名或者嵌入字段。也叫做嵌入一个类型。当我们嵌入一个类型到结构体中时，该类型的名字充当了嵌入字段的字段名。
+
+定义一个Person的结构体
+```go
+type Person struct {
+	Name string
+	Height int
+}
+
+//接受者为指针类型的方法
+func (person *Person) GetName()  {
+	fmt.Println("my name is",person.Name)
+}
+//接受者为值类型的方法
+func (person Person) GetNameValue() {
+	fmt.Println("my name is",person.Name)
+}
+
+```
+定义一个User的结构体
+
+```go
+
+type User struct {
+	phone string
+}
+
+//接受者为指针类型的方法
+func (user *User) GetPhone()  {
+	fmt.Println("user phone is",user.phone)
+}
+//接受者为值类型的方法
+func (user User) GetPhoneValue() {
+	fmt.Println("user phone is",user.phone)
+}
+```
+扩展People
+
+```go
+
+type People struct {
+	*Person  //嵌入指针类型
+	User       //嵌入结构体类型
+	Name string
+	Age int
+	Father *People
+}
+
+```
+
+初始画一个值类型和指针类型的People
+```go
+//指针类型
+p1 := &People{
+    Person:&Person{"Tom",67},
+    User:User{phone:"17789876543"},
+    Name:"Army",
+    Age:23,
+    Father:&People{
+        Name:"Smith",
+        Age:56,
+    },
+
+}
+//值类型
+p2 := People{
+    Person:&Person{"Alen",78},
+    User:User{phone:"16698765432"},
+    Name:"Adam",
+    Age:26,
+    Father:&People{
+        Name:"Adan",
+        Age:59,
+    },
+}
+
+```
+结果分析
+
+```go
+
+//我们可以通过访问访问嵌入类型间接访问嵌入类型的方法和成员
+p1.Person.GetName()
+p1.Person.GetNameValue()
+p1.User.GetPhone()
+p1.User.GetPhoneValue()
+p2.Person.GetName()
+p2.Person.GetNameValue()
+p2.User.GetPhone()
+p2.User.GetPhoneValue()
+fmt.Println(p1.User.phone)
+fmt.Println(p1.Person.Name)
+fmt.Println(p2.User.phone)
+fmt.Println(p2.Person.Name)
+
+//go语言嵌入类型的方法提升
+//指针类型和值类型的people可以直接访问嵌入类型的接受者为值类型或者指针类的方法和成员
+p1.GetName()
+p1.GetNameValue()
+p1.GetPhone()
+p1.GetPhoneValue()
+p2.GetName()
+p2.GetNameValue()
+p2.GetPhone()
+p2.GetPhoneValue()
+fmt.Println(p1.phone)
+fmt.Println(p2.phone)
+
+//当people的成员字段名和嵌入类型的字段名冲突的时候，people的成员优先级更高
+fmt.Println(p2.Name) //输出p2的name，而不是p2的User的name
+fmt.Println(p1.Name)
+
+
+```
+
+
+
+
+以上可看出 假设结构体类型P(*People)和嵌入类型B(*Person)
+
+- P可以直接访问B的
 

@@ -18,8 +18,8 @@
       <file leaf-file-name="main.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="68" column="27" lean-forward="true" selection-start-line="60" selection-start-column="4" selection-end-line="68" selection-end-column="27" />
+            <state relative-caret-position="595">
+              <caret line="99" column="0" lean-forward="true" selection-start-line="72" selection-start-column="4" selection-end-line="99" selection-end-column="0" />
               <folding>
                 <element signature="e#14#41#0" expanded="true" />
               </folding>
@@ -40,7 +40,7 @@
       <file leaf-file-name="entry.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/readme/entry.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="931">
+            <state relative-caret-position="607">
               <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
               <folding />
             </state>
@@ -50,8 +50,8 @@
       <file leaf-file-name="induction.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/readme/induction.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="436">
-              <caret line="373" column="47" lean-forward="false" selection-start-line="373" selection-start-column="47" selection-end-line="373" selection-end-column="47" />
+            <state relative-caret-position="206">
+              <caret line="456" column="4" lean-forward="false" selection-start-line="456" selection-start-column="4" selection-end-line="456" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -69,6 +69,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>结构体</find>
+      <find>super</find>
     </findStrings>
   </component>
   <component name="GOROOT" path="/usr/local/Cellar/go/1.9.2/libexec" />
@@ -201,7 +202,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="lue" />
     <MESSAGE value="简介" />
-    <option name="LAST_COMMIT_MESSAGE" value="简介" />
+    <MESSAGE value="结构体" />
+    <option name="LAST_COMMIT_MESSAGE" value="结构体" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -287,14 +289,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mian/main.go" />
-    <entry file="file://$PROJECT_DIR$/readme/entry.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="931">
-          <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -303,10 +297,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/readme/entry.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="607">
+          <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main/main.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="68" column="27" lean-forward="true" selection-start-line="60" selection-start-column="4" selection-end-line="68" selection-end-column="27" />
+        <state relative-caret-position="595">
+          <caret line="99" column="0" lean-forward="true" selection-start-line="72" selection-start-column="4" selection-end-line="99" selection-end-column="0" />
           <folding>
             <element signature="e#14#41#0" expanded="true" />
           </folding>
@@ -315,8 +317,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/readme/induction.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="436">
-          <caret line="373" column="47" lean-forward="false" selection-start-line="373" selection-start-column="47" selection-end-line="373" selection-end-column="47" />
+        <state relative-caret-position="206">
+          <caret line="456" column="4" lean-forward="false" selection-start-line="456" selection-start-column="4" selection-end-line="456" selection-end-column="4" />
           <folding />
         </state>
       </provider>

@@ -6,13 +6,118 @@ import (
 )
 
 
+type Person struct {
+	Name string
+	Height int
+}
+type User struct {
+	phone string
+}
+
+//接受者为指针类型的方法
+func (person *Person) GetName()  {
+	fmt.Println("my name is",person.Name)
+}
+//接受者为值类型的方法
+func (person Person) GetNameValue() {
+	fmt.Println("my name is",person.Name)
+}
+//接受者为指针类型的方法
+func (user *User) GetPhone()  {
+	fmt.Println("user phone is",user.phone)
+}
+//接受者为值类型的方法
+func (user User) GetPhoneValue() {
+	fmt.Println("user phone is",user.phone)
+}
+
 type People struct {
+	*Person
+	User
 	Name string
 	Age int
 	Father *People
 }
 
+func (people *People) referral()  {
+	fmt.Println("people name is",people.Name)
+}
+
 func main()  {
+
+	//指针类型
+	p1 := &People{
+		Person:&Person{"Tom",67},
+		User:User{phone:"17789876543"},
+		Name:"Army",
+		Age:23,
+		Father:&People{
+			Name:"Smith",
+			Age:56,
+		},
+
+	}
+	//值类型
+	p2 := People{
+		Person:&Person{"Alen",78},
+		User:User{phone:"16698765432"},
+		Name:"Adam",
+		Age:26,
+		Father:&People{
+			Name:"Adan",
+			Age:59,
+		},
+	}
+
+
+	p1.GetName()
+	p1.GetNameValue()
+	p1.GetPhone()
+	p1.GetPhoneValue()
+	p2.GetName()
+	p2.GetNameValue()
+	p2.GetPhone()
+	p2.GetPhoneValue()
+	fmt.Println(p1.phone)
+	fmt.Println(p2.phone)
+
+	p1.Person.GetName()
+	p1.Person.GetNameValue()
+	p1.User.GetPhone()
+	p1.User.GetPhoneValue()
+	p2.Person.GetName()
+	p2.Person.GetNameValue()
+	p2.User.GetPhone()
+	p2.User.GetPhoneValue()
+	fmt.Println(p1.User.phone)
+	fmt.Println(p1.Person.Name)
+	fmt.Println(p2.User.phone)
+	fmt.Println(p2.Person.Name)
+	//
+	//
+	fmt.Println(p2.Name)
+	fmt.Println(p1.Name)
+
+
+
+
+
+
+
+	//指针类型可调用嵌入类型 接受者为值类型的方法
+	//peo.intro()
+	////值类型可调用嵌入类型 接受者为指针类型的方法
+	//p1.intro()
+	//
+	//peo.Person.intro()
+	//fmt.Println(peo.Name)
+	//fmt.Println(peo.Person.Name)
+
+	//peo.referral()
+
+
+
+
 	//fmt.Println("number is ",rand.Intn(10))
 	//fmt.Printf("number is ",math.Sqrt(9))
 
@@ -58,15 +163,15 @@ func main()  {
 
 
 
-	peo := &People{
-		Name : "Tom",
-		Age : 20,
-		Father:&People{
-			Name:"Smith",
-			Age:56,
-		},
-	}
-	fmt.Println(peo.Father)
+	//peo := &People{
+	//	Name : "Tom",
+	//	Age : 20,
+	//	Father:&People{
+	//		Name:"Smith",
+	//		Age:56,
+	//	},
+	//}
+	//fmt.Println(peo.Father)
 
 
 }
