@@ -4,7 +4,8 @@ import (
 	"fmt"
 	//"math/rand"
 	//"sort"
-	"strings"
+	//"strings"
+	//"unicode"
 )
 
 
@@ -48,14 +49,48 @@ func (people *People) referral()  {
 func main()  {
 
 
-	str := "welcome to beijing"
-	str1 := strings.Index(str[5:], "o")
-	fmt.Println(str)
-	fmt.Println(str[5:])
-	fmt.Println(str1)
 
-	user := []int{1,2,3,4,5}
-	fmt.Println(user[:len(user)-1])
+	dic := make(map[string]string,10)
+	dic["name"] = "xiaoming"
+	fmt.Println(dic)
+
+	//第一个参数代表对应的值，第二个代表是否存在
+	value,exists := dic["name"]
+	fmt.Println(value,exists) //  输出  xiaoming true
+
+
+	fmt.Println(len(dic))
+
+	//删除键为name的映射
+	//delete(dic,"name")
+
+	for key,value := range dic{
+		fmt.Println(key,value)
+	}
+
+
+	//mmp := map[int]string{
+	//	2:"a",
+	//	3:"b",
+	//}
+	//fmt.Println(mmp)
+
+
+	//fmt.Println(len(dic))
+
+	//str := "welcome to beijing"
+	//str1 := strings.Index(str[5:], "o")
+	//fmt.Println(str)
+	//fmt.Println(str[5:])
+	//fmt.Println(str1)
+
+	//user := []int{1,2,3,4,5}
+	//peo := make([]int,5)
+	//copy(peo[2:3],user[0:3])
+	//fmt.Println(peo) // [0 0 1 0 0]
+	//
+	//copy(peo[2:4],user[0:3])
+	//fmt.Println(peo) // [0 0 1 2 0]
 
 	//
 	//arrays := []string{"a","b"}

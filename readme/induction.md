@@ -657,4 +657,54 @@ user := []int{1,2,3,4,5}
 fmt.Println(user[:len(user)-1]) //  [1 2 3 4]
 ```
 
+#### copy函数
 
+获取其他切片元素按序填充到目的切片中。
+
+如下例
+```go
+user := []int{1,2,3,4,5}
+peo := make([]int,5)
+copy(peo[2:3],user[0:3])
+fmt.Println(peo) // [0 0 1 0 0]
+```
+
+
+### 映射
+
+类似`key`,`value`
+
+```go
+
+//初始化一个映射，简易写法
+mmp := map[int]string{
+    2:"a",
+    3:"b",
+}
+fmt.Println(mmp)  //输出  map[2:a 3:b]
+
+//使用make初始化、创建，10代表容量，定义初始大小可提升性能
+dic := make(map[string]string,10)
+
+//赋值
+dic["name"] = "xiaoming"
+fmt.Println(dic)
+
+//取值
+//第一个参数代表对应的值，第二个代表是否存在
+value,exists := dic["name"]
+fmt.Println(value,exists) //  输出  xiaoming true
+
+//获取映射键的个数
+fmt.Println(len(dic))
+
+//删除键为name的映射
+//delete(dic,"name")
+
+//遍历,无序的，每次输出顺序都是随机的
+for key,value := range dic{
+    fmt.Println(key,value)
+}
+
+
+```
