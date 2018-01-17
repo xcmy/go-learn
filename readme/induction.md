@@ -258,11 +258,13 @@ func grow2(people *People)  {
 创建一个结构体的拷贝会有很大的性能开销。指针的真正意义就是通过指针可以共享值,所以上面的指针引用很能节省开销。
 
 
-#### 结构体函数
+#### 结构体方法
 
-或者说实例方法，（结构体实例调用的方法）
+go里面的method和func的区别就是，方法有一个接收者
 
-- 类型*People是super方法的接受者
+> A method is a function with a receiver
+
+- 类型*People是super方法的接收者
 
 ```go
 func (people *People) super()  {
@@ -377,6 +379,11 @@ fmt.Println(peo.Father)  //输出 &{Smith 56 <nil>}
 
 #### 嵌入类型
 
+
+go语言没有继承的概念，但是提倡使用代码复用的方式，即组合。嵌入类型就是组合的一种方式。
+
+>嵌入类型方便我们扩展或者修改已有的类型
+
 > 结构体类型可以包含匿名或者嵌入字段。也叫做嵌入一个类型。当我们嵌入一个类型到结构体中时，该类型的名字充当了嵌入字段的字段名。
 
 定义一个Person的结构体
@@ -386,11 +393,11 @@ type Person struct {
 	Height int
 }
 
-//接受者为指针类型的方法
+//接收者为指针类型的方法
 func (person *Person) GetName()  {
 	fmt.Println("my name is",person.Name)
 }
-//接受者为值类型的方法
+//接收者为值类型的方法
 func (person Person) GetNameValue() {
 	fmt.Println("my name is",person.Name)
 }
@@ -404,11 +411,11 @@ type User struct {
 	phone string
 }
 
-//接受者为指针类型的方法
+//接收者为指针类型的方法
 func (user *User) GetPhone()  {
 	fmt.Println("user phone is",user.phone)
 }
-//接受者为值类型的方法
+//接收者为值类型的方法
 func (user User) GetPhoneValue() {
 	fmt.Println("user phone is",user.phone)
 }
@@ -420,6 +427,7 @@ func (user User) GetPhoneValue() {
 type People struct {
 	*Person  //嵌入指针类型
 	User       //嵌入结构体类型
+
 	Name string
 	Age int
 	Father *People
@@ -427,7 +435,7 @@ type People struct {
 
 ```
 
-初始画一个值类型和指针类型的People
+初始化一个值类型和指针类型的People
 ```go
 //指针类型
 p1 := &People{
@@ -473,7 +481,7 @@ fmt.Println(p2.User.phone)
 fmt.Println(p2.Person.Name)
 
 //go语言嵌入类型的方法提升
-//指针类型和值类型的people可以直接访问嵌入类型的接受者为值类型或者指针类的方法和成员
+//指针类型和值类型的people可以直接访问嵌入类型的接收者为值类型或者指针类的方法和成员
 p1.GetName()
 p1.GetNameValue()
 p1.GetPhone()
@@ -485,7 +493,7 @@ p2.GetPhoneValue()
 fmt.Println(p1.phone)
 fmt.Println(p2.phone)
 
-//当people的成员字段名和嵌入类型的字段名冲突的时候，people的成员优先级更高
+//当people的成员字段名和嵌入类型的字段名冲突的时候，嵌入类型的字段名被覆盖。
 fmt.Println(p2.Name) //输出p2的name，而不是p2的User的name
 fmt.Println(p1.Name)
 
@@ -493,9 +501,12 @@ fmt.Println(p1.Name)
 ```
 
 
+以上可看出 假设结构体类型P(*People 或者说外部类型)和嵌入类型B(*Person)
 
+> P和&P可以直接访问B的接收者为值类型或者指针类型的方法和成员（类似继承）
 
-以上可看出 假设结构体类型P(*People)和嵌入类型B(*Person)
+> P和&P也可以通过访问嵌入类型来间接访问嵌入类型的方法和成员
 
-- P可以直接访问B的
+> 外部类型可以设置和嵌入类型一样的成员字段名和方法名来覆盖嵌入类型 （类似重载）
+
 
