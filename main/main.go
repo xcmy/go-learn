@@ -2,7 +2,9 @@ package main
 
 import (
 	"fmt"
-	//"math"
+	//"math/rand"
+	//"sort"
+	"strings"
 )
 
 
@@ -45,58 +47,123 @@ func (people *People) referral()  {
 
 func main()  {
 
+
+	str := "welcome to beijing"
+	str1 := strings.Index(str[5:], "o")
+	fmt.Println(str)
+	fmt.Println(str[5:])
+	fmt.Println(str1)
+
+	user := []int{1,2,3,4,5}
+	fmt.Println(user[:len(user)-1])
+
+	//
+	//arrays := []string{"a","b"}
+	//
+	//arrays[1] = "c"
+	//fmt.Println(arrays)
+	//
+	//定义一个长度和容量均为5的切片
+	//pos := make([]int,5)
+	//pos[1] = 3
+	//pos[4] = 8
+	//fmt.Println(pos)
+
+	//定义一个长度为0容量为10的切片
+	//users := make([]int,0,10)
+	//fmt.Println(users)
+
+
+	//users = users[0:6]
+	//users[5] = 9
+	//fmt.Println(users)
+
+
+	//users = append(users,5)
+	//fmt.Println(users)
+	//
+	//fmt.Println(cap(users))
+	//uc := cap(users)
+	//for i:=0;i<25 ;i++  {
+	//	users = append(users,5)
+	//	if uc != cap(users) {
+	//		fmt.Println("索引:",i,"; user容量:",cap(users))
+	//		uc = cap(users)
+	//	}
+	//}
+
+	//users := []int{1,2,3,4,5}
+	//slice := users[2:5]
+	//fmt.Println(slice)
+	//slice[1] = 10
+	//fmt.Println(users)
+	//
+	//users[2] = 10
+	//fmt.Println(users)
+
+	//var array [4]int
+	//array[0] = 1
+	//fmt.Println(array) //输出[1 0 0 0]
+	//
+	//array2 := [3]string{"a","b","c"}
+	//fmt.Println(array2) //输出[a b c]
+	//
+	//for index,value := range array2 {
+	//	fmt.Println(index,"--",value)
+	//}
+
 	//指针类型
-	p1 := &People{
-		Person:&Person{"Tom",67},
-		User:User{phone:"17789876543"},
-		Name:"Army",
-		Age:23,
-		Father:&People{
-			Name:"Smith",
-			Age:56,
-		},
-
-	}
-	//值类型
-	p2 := People{
-		Person:&Person{"Alen",78},
-		User:User{phone:"16698765432"},
-		Name:"Adam",
-		Age:26,
-		Father:&People{
-			Name:"Adan",
-			Age:59,
-		},
-	}
-
-
-	p1.GetName()
-	p1.GetNameValue()
-	p1.GetPhone()
-	p1.GetPhoneValue()
-	p2.GetName()
-	p2.GetNameValue()
-	p2.GetPhone()
-	p2.GetPhoneValue()
-	fmt.Println(p1.phone)
-	fmt.Println(p2.phone)
-
-	p1.Person.GetName()
-	p1.Person.GetNameValue()
-	p1.User.GetPhone()
-	p1.User.GetPhoneValue()
-	p2.Person.GetName()
-	p2.Person.GetNameValue()
-	p2.User.GetPhone()
-	p2.User.GetPhoneValue()
-	fmt.Println(p1.User.phone)
-	fmt.Println(p1.Person.Name)
-	fmt.Println(p2.User.phone)
-	fmt.Println(p2.Person.Name)
+	//p1 := &People{
+	//	Person:&Person{"Tom",67},
+	//	User:User{phone:"17789876543"},
+	//	Name:"Army",
+	//	Age:23,
+	//	Father:&People{
+	//		Name:"Smith",
+	//		Age:56,
+	//	},
+	//
+	//}
+	////值类型
+	//p2 := People{
+	//	Person:&Person{"Alen",78},
+	//	User:User{phone:"16698765432"},
+	//	Name:"Adam",
+	//	Age:26,
+	//	Father:&People{
+	//		Name:"Adan",
+	//		Age:59,
+	//	},
+	//}
 	//
 	//
-	fmt.Println(p2.Name)
-	fmt.Println(p1.Name)
+	//p1.GetName()
+	//p1.GetNameValue()
+	//p1.GetPhone()
+	//p1.GetPhoneValue()
+	//p2.GetName()
+	//p2.GetNameValue()
+	//p2.GetPhone()
+	//p2.GetPhoneValue()
+	//fmt.Println(p1.phone)
+	//fmt.Println(p2.phone)
+	//
+	//p1.Person.GetName()
+	//p1.Person.GetNameValue()
+	//p1.User.GetPhone()
+	//p1.User.GetPhoneValue()
+	//p2.Person.GetName()
+	//p2.Person.GetNameValue()
+	//p2.User.GetPhone()
+	//p2.User.GetPhoneValue()
+	//fmt.Println(p1.User.phone)
+	//fmt.Println(p1.Person.Name)
+	//fmt.Println(p2.User.phone)
+	//fmt.Println(p2.Person.Name)
+	////
+	////
+	//fmt.Println(p2.Name)
+	//fmt.Println(p1.Name)
 
 
 

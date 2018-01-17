@@ -10,6 +10,7 @@
 
 - [结构体](#结构体)
 
+- [嵌入类型](#嵌入类型)
 
 
 
@@ -377,7 +378,7 @@ fmt.Println(peo.Father)  //输出 &{Smith 56 <nil>}
 ```
 
 
-#### 嵌入类型
+### 嵌入类型
 
 
 go语言没有继承的概念，但是提倡使用代码复用的方式，即组合。嵌入类型就是组合的一种方式。
@@ -508,5 +509,152 @@ fmt.Println(p1.Name)
 > P和&P也可以通过访问嵌入类型来间接访问嵌入类型的方法和成员
 
 > 外部类型可以设置和嵌入类型一样的成员字段名和方法名来覆盖嵌入类型 （类似重载）
+
+
+
+### 数组
+
+
+在go中，数组是固定大小的。则不可改变。不能访问超过数组边界的元素。
+
+```go
+//声明再赋值
+var array [4]int
+array[0] = 1
+fmt.Println(array) //输出[1 0 0 0]
+//直接初始化
+array2 := [3]string{"a","b","c"}
+fmt.Println(array2) //输出[a b c]
+//遍历
+for index,value := range array2 {
+    fmt.Println(index,"--",value)
+}
+
+```
+
+
+### 切片
+
+切片是Go数组的一个抽象，或者说是Go数组的一个封装。切片比数组更加灵活好用。
+
+#### 切片声明和创建
+
+> 切片同数组一样不能访问超出切片范围的元素
+
+1. 第一种，简单切片使用这种方式
+
+```go
+arrays := []string{"a","b"}
+
+arrays[1] = "c"
+fmt.Println(arrays)  //  [a c]
+```
+2. 第二种,在切片特定位置写入值很有用
+
+```go
+//定义一个长度和容量均为5的切片
+pos := make([]int,5)
+pos[1] = 3
+pos[4] = 8
+fmt.Println(pos)
+
+```
+
+3. 第三种，定义一个空切片，对于切片数量未知的时候使用
+```go
+var names []string
+fmt.Println(names)
+
+```
+
+4. 第四种，可以指定切片的长度和容量。
+
+```go
+//定义一个长度为0容量为10的切片
+users := make([]int,0,10)
+fmt.Println(users)
+
+```
+
+####  添加元素、切片扩容
+
+- `cap()`是一个内置函数，能计算切片的容量
+
+```go
+fmt.Println(cap(users)) //输出10
+```
+
+> 使用`append()`给切片添加元素，如果切片容量不够会自动扩容。go扩展数组使用的是2倍算法（2x algorithm）
+
+
+```go
+fmt.Println(users)  //输出 []
+fmt.Println(cap(users)) //输出10
+
+uc := cap(users)
+for i:=0;i<25 ;i++  {
+    users = append(users,5)
+    if uc != cap(users) {
+        fmt.Println("索引:",i,"; users容量:",cap(users))
+        uc = cap(users)
+    }
+}
+
+```
+
+
+输出结果
+
+```shell
+[]
+10
+索引: 10 ; users容量: 20
+索引: 20 ; users容量: 40
+```
+可以看出，users初始容量为10；
+当使用`append()`给users添加第十一个元素的时候，users的容量变为20；
+给users添加第21个元素的时候，users的容量变为40；
+
+
+#### 子切片
+
+在其他语言中如ruby、js中使用`slice`获取数组的切片。事实上是操作一个copy的全新的数组，不会对原切片造成影响。
+而go语言不同的是操作使用`slice`获取的切片等同于操作原切片
+
+
+```go
+users := []int{1,2,3,4,5}
+slice := users[2:5]
+fmt.Println(slice)  //[3 4 5]
+slice[1] = 10
+fmt.Println(users)  //[1 2 3 10 5]
+
+//等同于
+users[2] = 10
+
+```
+
+#### 使用切片
+
+- [a:b]获取切片索引a到索引b的切片
+- [:b]获取切片开始到索引b的切片
+- [a:]获取索引b到切片结束的切片
+
+> `strings.Index()`获取字符串某个字符所在索引
+
+> `len()`获取切片长度
+
+如下例
+
+```
+str := "welcome to beijing"
+str1 := strings.Index(str[5:], "o")
+fmt.Println(str) // welcome to beijing
+fmt.Println(str[5:]) // me to beijing
+fmt.Println(str1) // 4
+
+user := []int{1,2,3,4,5}
+fmt.Println(user[:len(user)-1]) //  [1 2 3 4]
+```
 
 
