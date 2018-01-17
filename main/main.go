@@ -2,10 +2,7 @@ package main
 
 import (
 	"fmt"
-	//"math/rand"
-	//"sort"
-	//"strings"
-	//"unicode"
+	"go-learn/router"
 )
 
 
@@ -49,24 +46,28 @@ func (people *People) referral()  {
 func main()  {
 
 
-
-	dic := make(map[string]string,10)
-	dic["name"] = "xiaoming"
-	fmt.Println(dic)
-
-	//第一个参数代表对应的值，第二个代表是否存在
-	value,exists := dic["name"]
-	fmt.Println(value,exists) //  输出  xiaoming true
+	rou := router.Router{Get:"get"}
+	fmt.Println(rou)
 
 
-	fmt.Println(len(dic))
+	//
+	//dic := make(map[string]string,10)
+	//dic["name"] = "xiaoming"
+	//fmt.Println(dic)
+	//
+	////第一个参数代表对应的值，第二个代表是否存在
+	//value,exists := dic["name"]
+	//fmt.Println(value,exists) //  输出  xiaoming true
+	//
+	//
+	//fmt.Println(len(dic))
 
 	//删除键为name的映射
 	//delete(dic,"name")
 
-	for key,value := range dic{
-		fmt.Println(key,value)
-	}
+	//for key,value := range dic{
+	//	fmt.Println(key,value)
+	//}
 
 
 	//mmp := map[int]string{

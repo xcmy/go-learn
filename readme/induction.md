@@ -12,8 +12,13 @@
 
 - [嵌入类型](#嵌入类型)
 
+- [数组](#数组)
 
+- [切片](#切片)
 
+- [映射](#映射)
+
+- [包](#包)
 
 ### 简介
 
@@ -706,5 +711,23 @@ for key,value := range dic{
     fmt.Println(key,value)
 }
 
+
+```
+
+### 包
+
+- `$GOPATH`工作目录,运行`go env`可查看
+
+项目位于$GOPATH/src/
+
+项目目录如下图
+
+![image](../static/mulu.png)
+
+```go
+import (
+	"fmt"   //内置包导入
+	"go-learn/router"  //自定义包导入，需写全路径
+)
 
 ```
