@@ -6,11 +6,11 @@ import (
 	//"go-learn/router"
 	"errors"
 	//"log"
+	"os"
 )
 
-
 type Person struct {
-	Name string
+	Name   string
 	Height int
 }
 type User struct {
@@ -18,39 +18,40 @@ type User struct {
 }
 
 //接受者为指针类型的方法
-func (person *Person) GetName()  {
-	fmt.Println("my name is",person.Name)
+func (person *Person) GetName() {
+	fmt.Println("my name is", person.Name)
 }
+
 //接受者为值类型的方法
 func (person Person) GetNameValue() {
-	fmt.Println("my name is",person.Name)
+	fmt.Println("my name is", person.Name)
 }
+
 //接受者为指针类型的方法
-func (user *User) GetPhone()  {
-	fmt.Println("user phone is",user.phone)
+func (user *User) GetPhone() {
+	fmt.Println("user phone is", user.phone)
 }
+
 //接受者为值类型的方法
 func (user User) GetPhoneValue() {
-	fmt.Println("user phone is",user.phone)
+	fmt.Println("user phone is", user.phone)
 }
 
 type People struct {
 	*Person
 	User
-	Name string
-	Age int
+	Name   string
+	Age    int
 	Father *People
 }
 
-func (people *People) referral()  {
-	fmt.Println("people name is",people.Name)
+func (people *People) referral() {
+	fmt.Println("people name is", people.Name)
 }
-
 
 type userLog interface {
 	Log(message string)
 }
-
 
 //
 //type Shape interface {
@@ -77,14 +78,13 @@ type userLog interface {
 //	return shape.area()
 //}
 
-
 //
 //type error interface {
 //	Error() string
 //}
 
 func success(bool bool) error {
-	if bool{
+	if bool {
 		return errors.New("success")
 	}
 	return nil
@@ -104,7 +104,7 @@ func a() int {
 	defer ex2()
 	defer func() {
 		r := recover()
-		fmt.Println("error is :",r)
+		fmt.Println("error is :", r)
 	}()
 
 	panic("panic")
@@ -112,15 +112,24 @@ func a() int {
 	fmt.Println("a end")
 
 	return 1
+
 }
 
-func main()  {
+func main() {
 
-	fmt.Println(a())
-	fmt.Println("continue")
+	file, err := os.Open("a_file_to_read")
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	defer file.Close()
 
+	// 读这个文件
 
-	fmt.Println(success(true))
+	//fmt.Println(a())
+	//fmt.Println("continue")
+
+	//fmt.Println(success(true))
 
 	//rectangle := Rectangle{width:10,height:10}
 	//triangle := Triangle{width:10,height:10}
@@ -133,7 +142,6 @@ func main()  {
 	//rou := router.Router{Name:"polly"}
 	//fmt.Println(rou)
 	//rou.GetName()
-
 
 	//
 	//dic := make(map[string]string,10)
@@ -154,13 +162,11 @@ func main()  {
 	//	fmt.Println(key,value)
 	//}
 
-
 	//mmp := map[int]string{
 	//	2:"a",
 	//	3:"b",
 	//}
 	//fmt.Println(mmp)
-
 
 	//fmt.Println(len(dic))
 
@@ -194,11 +200,9 @@ func main()  {
 	//users := make([]int,0,10)
 	//fmt.Println(users)
 
-
 	//users = users[0:6]
 	//users[5] = 9
 	//fmt.Println(users)
-
 
 	//users = append(users,5)
 	//fmt.Println(users)
@@ -286,12 +290,6 @@ func main()  {
 	//fmt.Println(p2.Name)
 	//fmt.Println(p1.Name)
 
-
-
-
-
-
-
 	//指针类型可调用嵌入类型 接受者为值类型的方法
 	//peo.intro()
 	////值类型可调用嵌入类型 接受者为指针类型的方法
@@ -303,9 +301,6 @@ func main()  {
 
 	//peo.referral()
 
-
-
-
 	//fmt.Println("number is ",rand.Intn(10))
 	//fmt.Printf("number is ",math.Sqrt(9))
 
@@ -314,7 +309,6 @@ func main()  {
 	//
 	//fmt.Println(add(2,3))
 	//fmt.Println(plus(2,4))
-
 
 	//Bob := People{}
 	//tom := People{Name:"Tom",Age:16}
@@ -330,14 +324,11 @@ func main()  {
 
 	//fmt.Println(adam.Age)
 
-
 	//copy1()
 	//copy2()
 
 	//fmt.Println(newPeople("Tom",26))
 	//fmt.Println(newPeople1("Tom",26))
-
-
 
 	//p2 := People{Name:"xiaoming",Age:23}
 	//
@@ -349,8 +340,6 @@ func main()  {
 	//fmt.Println(p1)
 	//fmt.Println(p2)
 
-
-
 	//peo := &People{
 	//	Name : "Tom",
 	//	Age : 20,
@@ -361,60 +350,57 @@ func main()  {
 	//}
 	//fmt.Println(peo.Father)
 
-
 }
 
-func newPeople(name string,age int) *People  {
+func newPeople(name string, age int) *People {
 	return &People{
-		Name:name,
-		Age:age,
+		Name: name,
+		Age:  age,
 	}
 }
 
-func newPeople1(name string,age int) People  {
+func newPeople1(name string, age int) People {
 	return People{
-		Name:name,
-		Age:age,
+		Name: name,
+		Age:  age,
 	}
 }
 
-func copy1()  {
+func copy1() {
 	adam := People{
-		Name:"Adam",
-		Age:16,
+		Name: "Adam",
+		Age:  16,
 	}
 	grow1(adam)
 	fmt.Println(adam.Age) //输出16
 }
-func grow1(people People)  {
+func grow1(people People) {
 	people.Age += 1
 }
 
-
-
-func copy2()  {
+func copy2() {
 	adam := &People{
-		Name:"Adam",
-		Age:16,
+		Name: "Adam",
+		Age:  16,
 	}
 	grow2(adam)
 	adam.super()
 	fmt.Println(adam.Age) //输出17
 }
-func grow2(people *People)  {
+func grow2(people *People) {
 	people.Age += 1
 }
 
-func (people *People) super()  {
+func (people *People) super() {
 	people.Age += 2
 }
 
-func add(x int,y int)int  {
+func add(x int, y int) int {
 	return x + y
 }
+
 //连续参数类型若一致，可简写为
 
-func plus(x,y int)int  {
+func plus(x, y int) int {
 	return x - y
 }
-
