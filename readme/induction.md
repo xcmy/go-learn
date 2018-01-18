@@ -859,7 +859,73 @@ import (
 
 ### 接口
 
+接口是一种类型，接口是定义了一个方法的集合（只定义了方法的声明，没有方法的具体实现）。
+
+方法的接收者不能定义为接口类型
+
+接口常用于避免循环导入。由于接口没有具体的实现，所以他们的依赖性有限
+
+
 > Go 语言规范定义了接口方法集的调用规则
 > - 类型 *T 的可调用方法集包含接受者为 *T 或 T 的所有方法集
 > - 类型 T 的可调用方法集包含接受者为 T 的所有方法
 > - 类型 T 的可调用方法集不包含接受者为 *T 的方法
+
+
+###### 下面接口实现的一个例子
+
+创建一个接口，声明一个area()方法
+
+```go
+type Shape interface {
+	area() float64
+}
+```
+
+创建两个结构体，并创建两个接收者为值类型的area()方法
+
+```go
+type Rectangle struct {
+	width,height float64
+}
+
+func (rectangle Rectangle) area() float64 {
+	return rectangle.width*rectangle.height
+}
+
+type Triangle struct {
+	width,height float64
+}
+
+func (triangle Triangle) area() float64 {
+	return triangle.width*triangle.height/2
+}
+```
+
+创建一个参数为接口类型的方法
+
+```go
+func getArea(shape Shape) float64  {
+	return shape.area()
+}
+```
+
+调用
+
+```
+rectangle := Rectangle{width:10,height:10}
+triangle := Triangle{width:10,height:10}
+
+fmt.Println("长方形面积为：",getArea(rectangle))
+fmt.Println("三角形面积为：",getArea(triangle))
+
+//输出
+//长方形面积为： 100
+//三角形面积为： 50
+
+```
+
+接口有点类似多态的感觉，还需慢慢理解。
+
+
+###

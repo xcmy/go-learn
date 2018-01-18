@@ -50,41 +50,41 @@ type userLog interface {
 
 
 
-
-
-type namer interface {
-	area() int
+type Shape interface {
+	area() float64
 }
 
-type rect struct {
-	width,height int
+type Rectangle struct {
+	width,height float64
 }
 
-type square struct {
-	side int
+func (rectangle Rectangle) area() float64 {
+	return rectangle.width*rectangle.height
 }
 
-func (r rect) area() int {
-	return r.height * r.width
+type Triangle struct {
+	width,height float64
 }
 
-func (s square) area() int {
-	return s.side * s.side
+func (triangle Triangle) area() float64 {
+	return triangle.width*triangle.height/2
 }
 
-
+func getArea(shape Shape) float64  {
+	return shape.area()
+}
 
 
 func main()  {
 
 
-	var a = rect{4,3}
-	var b  = square{6}
+	rectangle := Rectangle{width:10,height:10}
+	triangle := Triangle{width:10,height:10}
 
-	fmt.Println(a.area())
-	fmt.Println(b.area())
+	fmt.Println("长方形面积为：",getArea(rectangle))
+	fmt.Println("三角形面积为：",getArea(triangle))
 
-
+	fmt.Println(rectangle.area())
 
 	//rou := router.Router{Name:"polly"}
 	//fmt.Println(rou)
