@@ -930,13 +930,103 @@ fmt.Println("三角形面积为：",getArea(triangle))
 
 ###  错误处理
 
-go语言没有异常处理,一般通过返回值处理错误。go语言有panic和recover函数。panic类似抛出异常，而recover类似捕获异常
+go语言没有异常处理,一般通过返回值处理错误。go提供了一个简单的错误处理框架errors,如下图
 
-
-
-go提供了一个简单的错误处理框架errors,如下图
 
 ![image](../static/errors.png)
+
+
+其中error是一个接口类型，定义如下
+```go
+type error interface {
+    Error() string
+}
+```
+
+下面举个errors的使用
+
+```go
+func success(bool bool) error {
+	if bool{
+		return errors.New("success")
+	}
+	return nil
+}
+```
+```go
+fmt.Println(success(true)) //输出success
+```
+
+
+
+####  panic recover  defer
+
+panic是go的一个内置函数，作用是抛出异常，抛出异常后，程序终止，panic之后的代码不再执行。
+
+
+recover是go的一个内置函数，作用是捕获异常。建议写在defer中
+
+- 可用于获取panic传递的error信息
+- 在defer中终止异常，使代码恢复正常执行。
+
+
+defer 关键字 就是用来添加函数结束时执行的操作；
+
+- defer的执行顺序是逆序的
+
+
+下面举个例子说明一下
+
+```go
+//定义一个方法a()
+func a() int {
+
+fmt.Println("a start")
+
+ex1 := func() {
+    fmt.Println("fun1")
+}
+ex2 := func() {
+    fmt.Println("fun2")
+}
+defer ex1()
+defer ex2()
+defer func() {
+    //在defer函数中使用recover()接收异常信息
+    r := recover()
+    fmt.Println("error is :",r)
+}()
+//使用panic()抛出异常
+panic("panic")
+
+fmt.Println("a end")
+
+return 1
+}
+```
+
+在main函数中调用
+
+```go
+fmt.Println(a())
+fmt.Println("continue")
+
+```
+
+打印输出信息如下图:
+![image](../static/deferp.png)
+
+
+可以看出在a()中使用panic()抛出异常后，后面的代码`fmt.Println("a end")`并没有执行，函数逆序执行defer声明的函数。
+并返回int类型的默认值（0）
+
+程序的执行顺序如下图：
+
+![image](../static/defer.png)
+
+
+
+
 
 
 

@@ -5,6 +5,7 @@ import (
 	//"go-learn/errors"
 	//"go-learn/router"
 	"errors"
+	//"log"
 )
 
 
@@ -84,14 +85,40 @@ type userLog interface {
 
 func success(bool bool) error {
 	if bool{
-		return errors.New("3456")
-	}else {
-		return nil
+		return errors.New("success")
 	}
+	return nil
 }
 
+func a() int {
+
+	fmt.Println("a start")
+
+	ex1 := func() {
+		fmt.Println("fun1")
+	}
+	ex2 := func() {
+		fmt.Println("fun2")
+	}
+	defer ex1()
+	defer ex2()
+	defer func() {
+		r := recover()
+		fmt.Println("error is :",r)
+	}()
+
+	panic("panic")
+
+	fmt.Println("a end")
+
+	return 1
+}
 
 func main()  {
+
+	fmt.Println(a())
+	fmt.Println("continue")
+
 
 	fmt.Println(success(true))
 

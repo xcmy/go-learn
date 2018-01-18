@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c8bd2a46-00dd-47fd-8a33-f72173f612a6" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/errors.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/static/defer.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/static/deferp.png" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/main/main.go" afterPath="$PROJECT_DIR$/main/main.go" />
       <change beforePath="$PROJECT_DIR$/readme/induction.md" afterPath="$PROJECT_DIR$/readme/induction.md" />
@@ -19,9 +20,11 @@
       <file leaf-file-name="main.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="6" column="10" lean-forward="false" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
-              <folding />
+            <state relative-caret-position="387">
+              <caret line="107" column="7" lean-forward="true" selection-start-line="107" selection-start-column="7" selection-end-line="107" selection-end-column="7" />
+              <folding>
+                <element signature="e#14#92#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -48,23 +51,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="example_test.go" pinned="false" current-in-tab="false">
-        <entry file="file:///usr/local/Cellar/go/1.9.2/libexec/src/errors/example_test.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="57">
-              <caret line="6" column="7" lean-forward="true" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
-              <folding>
-                <element signature="e#181#206#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="router.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/router/router.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+            <state relative-caret-position="361">
+              <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
               <folding>
                 <element signature="e#16#55#0" expanded="true" />
               </folding>
@@ -75,18 +66,8 @@
       <file leaf-file-name="builtin.go" pinned="false" current-in-tab="false">
         <entry file="file:///usr/local/Cellar/go/1.9.2/libexec/src/builtin/builtin.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="532">
-              <caret line="253" column="0" lean-forward="false" selection-start-line="253" selection-start-column="0" selection-end-line="255" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+            <state relative-caret-position="234">
+              <caret line="236" column="5" lean-forward="false" selection-start-line="236" selection-start-column="5" selection-end-line="236" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -95,22 +76,31 @@
       <file leaf-file-name="induction.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/readme/induction.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="546">
-              <caret line="941" column="0" lean-forward="true" selection-start-line="941" selection-start-column="0" selection-end-line="941" selection-end-column="0" />
+            <state relative-caret-position="594">
+              <caret line="1022" column="7" lean-forward="false" selection-start-line="1022" selection-start-column="7" selection-end-line="1022" selection-end-column="7" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="component.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/component/component.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="8" column="1" lean-forward="false" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
-              <folding>
-                <element signature="e#19#50#0" expanded="true" />
-              </folding>
-            </state>
+      <file leaf-file-name="mulu.png" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/mulu.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mulu2.png" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/mulu2.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="errors.png" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/errors.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
           </provider>
         </entry>
       </file>
@@ -289,7 +279,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1292">
           <caret line="72" column="27" lean-forward="false" selection-start-line="72" selection-start-column="4" selection-end-line="72" selection-end-column="27" />
-          <folding />
+          <folding>
+            <element signature="e#14#92#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -329,7 +321,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#14#92#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -361,7 +355,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#14#92#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -393,7 +389,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#14#92#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -419,17 +417,7 @@
         <state relative-caret-position="152">
           <caret line="8" column="1" lean-forward="false" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
           <folding>
-            <element signature="e#19#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/router/router.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding>
-            <element signature="e#16#55#0" expanded="true" />
+            <element signature="e#19#50#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -462,14 +450,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/local/Cellar/go/1.9.2/libexec/src/builtin/builtin.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="253" column="0" lean-forward="false" selection-start-line="253" selection-start-column="0" selection-end-line="255" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/errors/errors.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
@@ -478,18 +458,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/static/mulu.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/mulu2.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/errors.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/Cellar/go/1.9.2/libexec/src/builtin/builtin.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="236" column="5" lean-forward="false" selection-start-line="236" selection-start-column="5" selection-end-line="236" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/router/router.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding>
+            <element signature="e#16#55#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/defer.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main/main.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="6" column="10" lean-forward="false" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
-          <folding />
+        <state relative-caret-position="387">
+          <caret line="107" column="7" lean-forward="true" selection-start-line="107" selection-start-column="7" selection-end-line="107" selection-end-column="7" />
+          <folding>
+            <element signature="e#14#92#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/readme/induction.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="941" column="0" lean-forward="true" selection-start-line="941" selection-start-column="0" selection-end-line="941" selection-end-column="0" />
+        <state relative-caret-position="594">
+          <caret line="1022" column="7" lean-forward="false" selection-start-line="1022" selection-start-column="7" selection-end-line="1022" selection-end-column="7" />
           <folding />
         </state>
       </provider>
