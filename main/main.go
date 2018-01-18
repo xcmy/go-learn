@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"go-learn/router"
+	//"go-learn/router"
 )
 
 
@@ -43,11 +43,52 @@ func (people *People) referral()  {
 	fmt.Println("people name is",people.Name)
 }
 
+
+type userLog interface {
+	Log(message string)
+}
+
+
+
+
+
+type namer interface {
+	area() int
+}
+
+type rect struct {
+	width,height int
+}
+
+type square struct {
+	side int
+}
+
+func (r rect) area() int {
+	return r.height * r.width
+}
+
+func (s square) area() int {
+	return s.side * s.side
+}
+
+
+
+
 func main()  {
 
 
-	rou := router.Router{Get:"get"}
-	fmt.Println(rou)
+	var a = rect{4,3}
+	var b  = square{6}
+
+	fmt.Println(a.area())
+	fmt.Println(b.area())
+
+
+
+	//rou := router.Router{Name:"polly"}
+	//fmt.Println(rou)
+	//rou.GetName()
 
 
 	//

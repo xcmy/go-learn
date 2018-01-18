@@ -1,7 +1,19 @@
 package router
 
+import (
+	"go-learn/component"
+	"fmt"
+)
+
+func PrintName()  {
+	component.PrintUrl()
+}
+
 type Router struct {
-	Get string
-	post int
+	Name string
+}
+
+func (router Router) GetName()  {
+	fmt.Println(router.Name)
 }
 

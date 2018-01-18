@@ -20,6 +20,8 @@
 
 - [包](#包)
 
+- [接口](#接口)
+
 ### 简介
 
 
@@ -716,13 +718,35 @@ for key,value := range dic{
 
 ### 包
 
-- `$GOPATH`工作目录,运行`go env`可查看
+> `$GOPATH`工作目录,运行`go env`可查看
 
-项目位于$GOPATH/src/
+- 项目位于$GOPATH/src/
+
+创建一个新的文件夹router，在其下创建一个新的文件router.go
 
 项目目录如下图
 
 ![image](../static/mulu.png)
+
+
+
+在router.go中写一个结构体和方法。
+
+```
+package router   //包名和文件夹名字一致
+
+import "fmt"
+
+type Router struct {
+	Name string  //字段名要大写，不然外部无法调用
+}
+//方法名要大写，不然外部无法调用
+func (router Router) GetName()  {
+	fmt.Println(router.Name)
+}
+
+```
+然后我们在main.go中引入
 
 ```go
 import (
@@ -731,3 +755,111 @@ import (
 )
 
 ```
+方法调用
+
+```go
+rou := router.Router{Name:"polly"}
+fmt.Println(rou) // {polly}
+rou.GetName() // polly
+
+```
+
+#### 循环导入
+
+循环导入即A中引入了B包，B中又引入了A包。导致编译器报编译错误。
+
+如下，扩展router.go文件，增加一个函数PrintName()，并且在创建一个文件component.go文件，两个文件相互引入。
+
+```go
+//router.go文件
+package router
+
+import (
+	"go-learn/component"
+	"fmt"
+)
+
+func PrintName()  {
+	component.PrintUrl()
+}
+
+type Router struct {
+	Name string
+}
+
+func (router Router) GetName()  {
+	fmt.Println(router.Name)
+}
+
+```
+
+如下，我们在创建一个文件。
+
+```go
+//component.go文件
+package component
+
+import (
+	"go-learn/router"
+)
+
+func PrintUrl()  {
+	router.PrintName()
+}
+```
+
+此时文件的结构如下图：
+
+![image](../static/mulu2.png)
+
+
+然后我们在main文件引入router文件并调用的时候就会报编译错误
+
+```
+import cycle not allowed
+package main
+	imports go-learn/router
+	imports go-learn/component
+	imports go-learn/router
+```
+
+###### 循环引用解决办法
+
+导入包的作用就是使用包中的函数或者类型，循环引用是A引入B,B引入A,那么循环引用的解决办法就是创建C文件来共享类型或函数，
+使得A引入C，B引入C，这样就可以解决循环引用的问题。上面的问题通过将函数`PrintName()`和函数`PrintUrl()`放入C文件，
+在router.go和component.go分别引入C即可。
+
+
+
+#### 第三方库导入
+
+go有一个子命令`go get`可以用来获取第三方库的代码，`go get`支持很多种协议。
+
+用法:
+
+```
+go get github.com/***
+
+```
+
+第三方库文件放在 `$GOPATH/src/github.com`文件夹下
+
+第三方库导入
+
+```go
+import (
+    "github.com/***"
+)
+```
+
+#### 第三方库管理（依赖管理）
+
+使用`go get`管理，或者第三方依赖管理工具，如[godep](https://github.com/tools/godep)
+
+
+### 接口
+
+> Go 语言规范定义了接口方法集的调用规则
+> - 类型 *T 的可调用方法集包含接受者为 *T 或 T 的所有方法集
+> - 类型 T 的可调用方法集包含接受者为 T 的所有方法
+> - 类型 T 的可调用方法集不包含接受者为 *T 的方法
