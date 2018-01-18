@@ -2,7 +2,9 @@ package main
 
 import (
 	"fmt"
+	//"go-learn/errors"
 	//"go-learn/router"
+	"errors"
 )
 
 
@@ -49,42 +51,57 @@ type userLog interface {
 }
 
 
+//
+//type Shape interface {
+//	area() float64
+//}
+//
+//type Rectangle struct {
+//	width,height float64
+//}
+//
+//func (rectangle Rectangle) area() float64 {
+//	return rectangle.width*rectangle.height
+//}
+//
+//type Triangle struct {
+//	width,height float64
+//}
+//
+//func (triangle Triangle) area() float64 {
+//	return triangle.width*triangle.height/2
+//}
+//
+//func getArea(shape Shape) float64  {
+//	return shape.area()
+//}
 
-type Shape interface {
-	area() float64
-}
 
-type Rectangle struct {
-	width,height float64
-}
+//
+//type error interface {
+//	Error() string
+//}
 
-func (rectangle Rectangle) area() float64 {
-	return rectangle.width*rectangle.height
-}
-
-type Triangle struct {
-	width,height float64
-}
-
-func (triangle Triangle) area() float64 {
-	return triangle.width*triangle.height/2
-}
-
-func getArea(shape Shape) float64  {
-	return shape.area()
+func success(bool bool) error {
+	if bool{
+		return errors.New("3456")
+	}else {
+		return nil
+	}
 }
 
 
 func main()  {
 
+	fmt.Println(success(true))
 
-	rectangle := Rectangle{width:10,height:10}
-	triangle := Triangle{width:10,height:10}
-
-	fmt.Println("长方形面积为：",getArea(rectangle))
-	fmt.Println("三角形面积为：",getArea(triangle))
-
-	fmt.Println(rectangle.area())
+	//rectangle := Rectangle{width:10,height:10}
+	//triangle := Triangle{width:10,height:10}
+	//
+	//fmt.Println("长方形面积为：",getArea(rectangle))
+	//fmt.Println("三角形面积为：",getArea(triangle))
+	//
+	//fmt.Println(rectangle.area())
 
 	//rou := router.Router{Name:"polly"}
 	//fmt.Println(rou)

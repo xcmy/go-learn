@@ -928,4 +928,17 @@ fmt.Println("三角形面积为：",getArea(triangle))
 接口有点类似多态的感觉，还需慢慢理解。
 
 
-###
+###  错误处理
+
+go语言没有异常处理,一般通过返回值处理错误。go语言有panic和recover函数。panic类似抛出异常，而recover类似捕获异常
+
+
+
+go提供了一个简单的错误处理框架errors,如下图
+
+![image](../static/errors.png)
+
+
+
+
+
