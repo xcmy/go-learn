@@ -17,4 +17,4 @@
 ### 学习笔记
 
 
--  [快速入门](./readme/induction.md)
+-  [概览](./readme/induction.md)
