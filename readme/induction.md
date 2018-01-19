@@ -22,6 +22,16 @@
 
 - [接口](#接口)
 
+- [错误处理](#错误处理)
+
+- [代码格式化](#代码格式化)
+
+- [语句](#语句)
+
+- [函数类型](#l函数类型)
+
+- [协程、通道](#协程、通道)
+
 ### 简介
 
 
@@ -861,6 +871,8 @@ import (
 
 接口是一种类型，接口是定义了一个方法的集合（只定义了方法的声明，没有方法的具体实现）。
 
+go拥有一个没有任何方法的空接口：interface{}。因为每种类型都实现了空接口的0个方法，并且接口都是隐式实现，所以每种类型都实现了空接口的条约
+
 方法的接收者不能定义为接口类型
 
 接口常用于避免循环导入。由于接口没有具体的实现，所以他们的依赖性有限
@@ -1042,6 +1054,228 @@ fmt.Println("continue")
 ```
 go fmt ./...
 ```
+
+
+### 语句
+
+#### 条件语句if else
+
+
+- if语句可以不用else语句。
+- 可以在条件语句之前定义并初始化变量; 在此语句中声明的任何变量在所有分支中都可用。
+- Go语言中的条件不需要圆括号，但是必需有大括号。
+- Go语言中没有三元组
+
+
+例：
+
+```go
+
+if num := 9; num < 0 {
+    fmt.Println(num)
+} else if num < 10 {
+    fmt.Println(num)
+} else {
+    fmt.Println(num)
+}
+
+```
+
+#### 循环语句for
+
+第一种
+```go
+i := 1
+for i <= 3 {
+    fmt.Println(i)
+    i = i + 1
+}
+```
+
+第二种
+
+```go
+for j := 1; j <= 10; j+=2 {
+    fmt.Println(j)  //输出1、3、5、7、9
+}
+```
+第三种
+
+```go
+for {
+    fmt.Println("loop")
+    break   //或者return
+}
+```
+第四种
+
+```go
+for n := 0; n <= 5; n++ {
+    if n%2 == 0 {
+        continue  //跳过此次循环
+    }
+    fmt.Println(n)
+}
+
+```
+
+
+
+#### switch 语句
+
+
+举两个例子
+
+条件筛选
+
+```go
+i := 1
+switch i {
+case 1:
+    fmt.Println("1")
+case 2:
+    fmt.Println("2")
+case 3:
+    fmt.Println("3")
+default:
+    fmt.Println("de")
+}
+```
+变量类型判断
+
+```go
+mytype := func(i interface{}) {
+    switch i.(type) {
+    case int,string:
+        fmt.Println("string or int")
+    case float64:
+        fmt.Println("float")
+    case bool:
+        fmt.Println("bool")
+    default:
+        fmt.Println("other")
+    }
+}
+mytype("me")    //输出string or int
+```
+
+
+
+### 函数类型
+
+函数也是一种类型，可作为参数，返回值等。
+
+例：
+
+```go
+//定义一个函数类型
+type Area func(a int,b int) int
+
+//定义一个参数是函数类型的方法
+func rectangle(area Area) int {
+	return area(1,2)
+}
+
+```
+
+使用
+```go
+area := rectangle(func(a int, b int) int{
+    return a * b
+})
+
+fmt.Println(area)
+```
+
+
+
+### 协程、通道
+
+
+
+>- 进程：分配完整独立的地址空间，拥有自己独立的堆和栈，既不共享堆，亦不共享栈，进程的切换只发生在内核态，由操作系统调度。
+>- 线程：和其它本进程的线程共享地址空间，拥有自己独立的栈和共享的堆，共享堆，不共享栈，线程的切换一般也由操作系统调度(标准线程是的)。
+>- 协程：和线程类似，共享堆，不共享栈，协程的切换一般由程序员在代码中显式控制。
+
+> 协程（coroutine）是Go语言中的轻量级线程实现，由Go运行时（runtime）管理
+
+> channel(通道)是Go语言在语言级别提供的goroutine间的通信方式，我们可以使用channel在多个goroutine之间传递消息。
+
+>当使用通道作为函数参数时，可以指定通道是否仅用于发送或接收值。这种特殊性增加了程序的类型安全性。
+
+#### 通道实例
+
+
+```go
+//定义一个channel
+message1 := make(chan string)
+
+//goroutine  发送一个消息hello
+go func() {
+    message1 <- "hello"
+}()
+
+//goroutine 接收消息
+go func() {
+    msg := <-message1
+    fmt.Println("1", msg)
+}()
+
+//goroutine 接收消息
+go func() {
+    msg := <-message1
+    fmt.Println("2", msg)
+}()
+
+//接收消息是阻塞的，我们预制10毫秒的阻塞来完成消息接收。
+time.Sleep(time.Millisecond * 10)
+
+```
+
+上例会输出 `1 hello` 或者 `2 hello`,也就是消息的接收是随机的。
+
+
+
+#### 缓冲实例
+
+```go
+//设置通道缓冲值为2
+message1 := make(chan string,2)
+
+go func() {
+    // 最少发送两个消息
+    message1 <- "hello"
+    message1 <- "jack"
+}()
+
+go func() {
+    //按照发送是的顺序依次输出 输出值为hello jack
+    fmt.Println(<-message1)
+    fmt.Println(<-message1)
+}()
+time.Sleep(time.Millisecond * 10)
+
+```
+
+同步实例
+
+```go
+func worker(done chan bool) {
+	fmt.Print("working...")
+	time.Sleep(time.Second)
+	fmt.Println("done")
+	done <- true
+}
+func main() {
+
+	done := make(chan bool, 1)
+	go worker(done)
+	<-done  //相当于阻塞进程，可以注释看下输出顺序变化
+	fmt.Println("contiune")
+}
+```
+
+
 
 
 

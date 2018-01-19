@@ -2,11 +2,12 @@ package main
 
 import (
 	"fmt"
+	//"os"
 	//"go-learn/errors"
 	//"go-learn/router"
 	"errors"
 	//"log"
-	"os"
+	"time"
 )
 
 type Person struct {
@@ -114,15 +115,147 @@ func a() int {
 	return 1
 
 }
+func yuyu(a interface{}, b interface{}) interface{} {
 
+	return string(a.(int) + b.(int))
+}
+
+type Area func(a int, b int) int
+
+func rectangle(area Area) int {
+	return area(1, 2)
+}
+
+var counter = 0
+
+func incr() {
+	counter++
+	fmt.Println(counter)
+}
+
+func worker(done chan bool) {
+	fmt.Print("working...")
+	time.Sleep(time.Second)
+	fmt.Println("done")
+	done <- true
+}
 func main() {
 
-	file, err := os.Open("a_file_to_read")
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-	defer file.Close()
+	done := make(chan bool, 1)
+	go worker(done)
+	<-done
+	fmt.Println("contiune")
+
+	//message1 := make(chan string,2)
+	////message2 := make(chan string)
+	//
+	//go func() {
+	//	message1 <- "hello"
+	//	message1 <- "jack"
+	//}()
+	//
+	//go func() {
+	//	fmt.Println(<-message1)
+	//	fmt.Println(<-message1)
+	//}()
+
+
+	//go func() {
+	//	msg := <-message1
+	//	fmt.Println("2", msg)
+	//}()
+
+	//go func() {
+	//	msg := <-message2
+	//	fmt.Println("3",msg)
+	//}()
+	//
+	//go func() {
+	//	msg := <-message2
+	//	fmt.Println("4",msg)
+	//}()
+
+	time.Sleep(time.Millisecond * 10)
+
+
+
+	//i := 1
+	//for i <= 3 {
+	//	fmt.Println(i)
+	//	i = i + 1
+	//}
+
+	//for j := 1; j <= 10; j+=2 {
+	//	fmt.Println(j)  //输出1、3、5、7、9
+	//}
+
+	//for {
+	//	fmt.Println("loop")
+	//	return
+	//}
+
+	//for n := 0; n <= 5; n++ {
+	//	if n%2 == 0 {
+	//		continue
+	//	}
+	//	fmt.Println(n)
+	//}
+
+	//mytype := func(i interface{}) {
+	//	switch i.(type) {
+	//	case int,string:
+	//		fmt.Println("string or int")
+	//	case float64:
+	//		fmt.Println("float")
+	//	case bool:
+	//		fmt.Println("bool")
+	//	default:
+	//		fmt.Println("other")
+	//	}
+	//}
+	//mytype("me")    //输出
+
+
+
+
+
+	//i :=
+
+
+
+	//for i := 0; i < 2; i++ {
+	//	go incr()
+	//}
+	//time.Sleep(time.Millisecond * 10)
+
+	//go fmt.Println("hello")
+
+	//time.Sleep(time.Millisecond * 10) // this is bad, don't do this!
+	//fmt.Println("done")
+
+	//area := rectangle(func(a int, b int) int{
+	//	return a * b
+	//})
+	//
+	//fmt.Println(area)
+
+	//fmt.Println(yuyu(2,2))
+
+	//count := 41
+	//if x := 10; count > x {
+	//	fmt.Println("2222")
+	//}
+
+	//if err := process(); err != nil {
+	//	fmt.Println("222")
+	//}
+
+	//file, err := os.Open("a_file_to_read")
+	//if err != nil {
+	//	fmt.Println(err)
+	//	return
+	//}
+	//defer file.Close()
 
 	// 读这个文件
 
